@@ -12,27 +12,22 @@ package com.pwn9.PwnFilter;
 
 import com.google.common.collect.MapMaker;
 import com.pwn9.PwnFilter.api.ClientManager;
-import com.pwn9.PwnFilter.api.FilterClient;
 import com.pwn9.PwnFilter.command.pfcls;
 import com.pwn9.PwnFilter.command.pfdumpcache;
 import com.pwn9.PwnFilter.command.pfmute;
 import com.pwn9.PwnFilter.command.pfreload;
 import com.pwn9.PwnFilter.listener.*;
-import com.pwn9.PwnFilter.rules.RuleChain;
 import com.pwn9.PwnFilter.rules.RuleManager;
 import com.pwn9.PwnFilter.util.FileUtil;
 import com.pwn9.PwnFilter.util.LogManager;
 import com.pwn9.PwnFilter.util.PointManager;
-import com.pwn9.PwnFilter.util.Tracker;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.mcstats.Metrics;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.concurrent.ConcurrentMap;
 
 /**
@@ -49,11 +44,6 @@ import java.util.concurrent.ConcurrentMap;
 public class PwnFilter extends JavaPlugin {
 
     private static PwnFilter _instance;
-
-    // Metrics data
-    private Metrics metrics;
-    public static Tracker matchTracker;
-    private Metrics.Graph eventGraph;
 
     public static ConcurrentMap<Player, String> killedPlayers = new MapMaker().concurrencyLevel(2).weakKeys().makeMap();
 
@@ -108,9 +98,6 @@ public class PwnFilter extends JavaPlugin {
         // Initialize Points Manager if its enabled
         PointManager.setup(this);
 
-        // Activate Plugin Metrics
-        activateMetrics();
-
         //Load up our listeners
         ClientManager clientManager = ClientManager.getInstance();
         clientManager.registerClient(new PwnFilterCommandListener(this), this);
@@ -150,60 +137,6 @@ public class PwnFilter extends JavaPlugin {
         DataCache.getInstance().stop();
 
         LogManager.getInstance().stop();
-
-    }
-
-    public void activateMetrics() {
-        // Activate Plugin Metrics
-        try {
-            if (metrics == null) {
-                metrics = new Metrics(this);
-
-                eventGraph = metrics.createGraph("Rules by Event");
-                updateMetrics();
-
-                Metrics.Graph matchGraph = metrics.createGraph("Matches");
-                matchTracker = new Tracker("Matches");
-
-                matchGraph.addPlotter(matchTracker);
-            }
-            metrics.start();
-
-
-        } catch (IOException e) {
-            LogManager.logger.fine(e.getMessage());
-        }
-
-    }
-
-    public void updateMetrics() {
-
-        ArrayList<String> activeListenerNames = new ArrayList<String>();
-        for (FilterClient f : ClientManager.getInstance().getActiveClients()) {
-            activeListenerNames.add(f.getShortName());
-        }
-
-        // Remove old plotters
-        for (Metrics.Plotter p : eventGraph.getPlotters()) {
-            if (!activeListenerNames.contains(p.getColumnName())) {
-                eventGraph.removePlotter(p);
-            }
-        }
-
-        // Add new plotters
-        for (final FilterClient f : ClientManager.getInstance().getActiveClients()) {
-            final String eventName = f.getShortName();
-            eventGraph.addPlotter(new Metrics.Plotter(eventName) {
-                @Override
-                public int getValue() {
-                    RuleChain r = f.getRuleChain();
-                    if (r != null) {
-                        return r.ruleCount(); // Number of rules for this event type
-                    } else
-                        return 0;
-                }
-            });
-        }
 
     }
 

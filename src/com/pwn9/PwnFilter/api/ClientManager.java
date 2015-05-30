@@ -93,7 +93,6 @@ public class ClientManager {
             return false; // Already Registered
         }
         registeredClients.put(f, p);
-        plugin.updateMetrics();
         return true;
     }
 
@@ -111,7 +110,6 @@ public class ClientManager {
     public boolean unregisterClient(FilterClient f) {
         if (registeredClients.containsKey(f)) {
             registeredClients.remove(f);
-            plugin.updateMetrics();
             return true;
         } else {
             return false;

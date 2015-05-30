@@ -135,10 +135,6 @@ public class Rule implements ChainEntry {
 
         }
 
-        if(PwnFilter.matchTracker != null) {
-            PwnFilter.matchTracker.increment(); // Update Match Statistics
-        }
-
         // If we get this far, execute the actions
         for (Action a : actions) {
             a.execute(state);

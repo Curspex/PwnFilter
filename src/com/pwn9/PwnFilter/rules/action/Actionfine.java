@@ -20,7 +20,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 /**
  * Fine the user by extracting money from his economy account.
  */
-@SuppressWarnings("UnusedDeclaration")
 public class Actionfine implements Action {
 
     String messageString; // Message to apply to this action
