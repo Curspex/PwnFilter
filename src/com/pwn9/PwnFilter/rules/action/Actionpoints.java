@@ -16,12 +16,10 @@ import com.pwn9.PwnFilter.util.PointManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 
 /**
  * Add the configured number of points to the players account.
  */
-@SuppressWarnings("UnusedDeclaration")
 public class Actionpoints implements Action {
 
     String messageString;
@@ -60,7 +58,7 @@ public class Actionpoints implements Action {
         state.addLogMessage(String.format("Points Accumulated %s : %f. Total: %f",state.playerName,pointsAmount, pm.getPlayerPoints(p)));
 
         if (!messageString.isEmpty()) {
-            Bukkit.getScheduler().runTask(state.plugin, new BukkitRunnable() {
+            Bukkit.getScheduler().runTask(state.plugin, new Runnable() {
                 @Override
                 public void run() {
                     state.getPlayer().sendMessage(messageString);

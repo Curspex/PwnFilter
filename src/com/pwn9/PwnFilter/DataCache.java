@@ -35,7 +35,6 @@ import java.util.logging.Logger;
  * is the best I could come up with. - Sage
  */
 
-@SuppressWarnings("UnusedDeclaration")
 public class DataCache {
 
     public final static int runEveryTicks = 20; // Once per second

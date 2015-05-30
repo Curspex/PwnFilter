@@ -15,7 +15,6 @@ import com.pwn9.PwnFilter.FilterState;
 /**
  * This action stops processing of any more rules.
  */
-@SuppressWarnings("UnusedDeclaration")
 public class Actionabort implements Action {
 
     public void init(String s) {

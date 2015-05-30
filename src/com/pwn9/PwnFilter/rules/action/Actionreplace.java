@@ -16,7 +16,6 @@ import org.bukkit.ChatColor;
 /**
  * Decolor the whole string and replace the matched text with the replacement string.
  */
-@SuppressWarnings("UnusedDeclaration")
 public class Actionreplace implements Action {
     // messageString is what we will use to replace any matched text.
     String messageString = "";

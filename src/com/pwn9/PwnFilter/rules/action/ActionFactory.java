@@ -15,7 +15,6 @@ package com.pwn9.PwnFilter.rules.action;
  * eg: "then kick" would return the Actionkick object.
  *
  */
-@SuppressWarnings("UnusedDeclaration")
 public final class ActionFactory {
 
     public static Action getActionFromString(String s)

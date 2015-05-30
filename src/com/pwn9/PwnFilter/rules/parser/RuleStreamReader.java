@@ -23,7 +23,6 @@ import java.util.List;
  * Date: 13-11-14
  * Time: 9:49 PM
  */
-@SuppressWarnings("UnusedDeclaration")
 public class RuleStreamReader extends LineNumberReader{
     /**
      * Create a new line-numbering reader, using the default input-buffer

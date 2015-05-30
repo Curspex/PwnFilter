@@ -11,7 +11,6 @@
 package com.pwn9.PwnFilter.rules;
 
 import com.pwn9.PwnFilter.FilterState;
-import com.pwn9.PwnFilter.PwnFilter;
 import com.pwn9.PwnFilter.rules.action.Action;
 import com.pwn9.PwnFilter.util.LimitedRegexCharSequence;
 import com.pwn9.PwnFilter.util.LogManager;
@@ -27,7 +26,6 @@ import java.util.regex.Pattern;
  * <P>Each Rule has a single match Pattern, an ArrayList of {@link Condition}'s and an ArrayList of {@link com.pwn9.PwnFilter.rules.action.Action}'s</P>
  * TODO: Finish docs
  */
-@SuppressWarnings("UnusedDeclaration")
 public class Rule implements ChainEntry {
     private Pattern pattern;
     private String description = "";

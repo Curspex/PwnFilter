@@ -14,14 +14,11 @@ import com.pwn9.PwnFilter.FilterState;
 import com.pwn9.PwnFilter.util.Patterns;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.scheduler.BukkitRunnable;
-
 import java.util.ArrayList;
 
 /**
  * Responds to the user with the string provided.
  */
-@SuppressWarnings("UnusedDeclaration")
 public class Actionbroadcast implements Action {
     ArrayList<String> messageStrings = new ArrayList<String>();
 
@@ -42,7 +39,7 @@ public class Actionbroadcast implements Action {
 
         state.addLogMessage("Broadcasted: "+preparedMessages.get(0) + (preparedMessages.size() > 1?"...":""));
 
-        Bukkit.getScheduler().runTask(state.plugin, new BukkitRunnable() {
+        Bukkit.getScheduler().runTask(state.plugin, new Runnable() {
             @Override
             public void run() {
                 for (String m : preparedMessages) {

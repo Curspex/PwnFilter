@@ -13,7 +13,6 @@ package com.pwn9.PwnFilter.rules.action;
 import com.pwn9.PwnFilter.FilterState;
 import com.pwn9.PwnFilter.util.DefaultMessages;
 import org.bukkit.Bukkit;
-import org.bukkit.scheduler.BukkitRunnable;
 
 /**
  * Burns a player to death.
@@ -21,7 +20,6 @@ import org.bukkit.scheduler.BukkitRunnable;
  * calls are NOT thread-safe.
  * TODO: Consider hooking this into the custom death message handler.
  */
-@SuppressWarnings("UnusedDeclaration")
 public class Actionburn implements Action {
     // Message to apply to this burn action
     String messageString;
@@ -33,7 +31,7 @@ public class Actionburn implements Action {
 
     public boolean execute(final FilterState state ) {
         if (state.getPlayer() != null ) {
-            Bukkit.getScheduler().runTask(state.plugin, new BukkitRunnable() {
+            Bukkit.getScheduler().runTask(state.plugin, new Runnable() {
                 @Override
                 public void run() {
                     state.getPlayer().setFireTicks(5000);

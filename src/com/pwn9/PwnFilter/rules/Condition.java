@@ -12,7 +12,6 @@ package com.pwn9.PwnFilter.rules;
 
 import com.pwn9.PwnFilter.FilterState;
 
-
 public class Condition {
 
 

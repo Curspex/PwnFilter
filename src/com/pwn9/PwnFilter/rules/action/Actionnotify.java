@@ -16,12 +16,10 @@ import com.pwn9.PwnFilter.util.Patterns;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 
 /**
  * Notify all users with the permission specified in notifyperm:
  */
-@SuppressWarnings("UnusedDeclaration")
 public class Actionnotify implements Action {
     String permissionString;
     String messageString;
@@ -52,7 +50,7 @@ public class Actionnotify implements Action {
         final String sendString = Patterns.replaceVars(messageString,state);
 
         if (permissionString.equalsIgnoreCase("console")) {
-            Bukkit.getScheduler().runTask(state.plugin, new BukkitRunnable() {
+            Bukkit.getScheduler().runTask(state.plugin, new Runnable() {
                 @Override
                 public void run() {
                     Bukkit.getConsoleSender().sendMessage(sendString);
@@ -60,7 +58,7 @@ public class Actionnotify implements Action {
             });
         }  else {
             // Get all logged in players who have the required permission and send them the message
-            Bukkit.getScheduler().runTask(state.plugin, new BukkitRunnable() {
+            Bukkit.getScheduler().runTask(state.plugin, new Runnable() {
                 @Override
                 public void run() {
                     for (Player p : DataCache.getInstance().getOnlinePlayers()) {

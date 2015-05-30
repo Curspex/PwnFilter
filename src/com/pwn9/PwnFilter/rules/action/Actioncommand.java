@@ -13,12 +13,10 @@ package com.pwn9.PwnFilter.rules.action;
 import com.pwn9.PwnFilter.FilterState;
 import com.pwn9.PwnFilter.util.Patterns;
 import org.bukkit.Bukkit;
-import org.bukkit.scheduler.BukkitRunnable;
 
 /**
  * Execute a command as a player.
  */
-@SuppressWarnings("UnusedDeclaration")
 public class Actioncommand implements Action {
     String command;
 
@@ -38,7 +36,7 @@ public class Actioncommand implements Action {
                 cmd = state.getModifiedMessage().getColoredString();
             }
             state.addLogMessage("Helped " + state.playerName + " execute command: " + cmd);
-            Bukkit.getScheduler().runTask(state.plugin, new BukkitRunnable() {
+            Bukkit.getScheduler().runTask(state.plugin, new Runnable() {
                 @Override
                 public void run() {
                     state.getPlayer().chat("/" + cmd);

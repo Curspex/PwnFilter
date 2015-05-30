@@ -15,7 +15,6 @@ import com.pwn9.PwnFilter.PwnFilter;
 import com.pwn9.PwnFilter.util.DefaultMessages;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.Bukkit;
-import org.bukkit.scheduler.BukkitRunnable;
 
 /**
  * Fine the user by extracting money from his economy account.
@@ -57,7 +56,7 @@ public class Actionfine implements Action {
                         state.playerName,resp.amount,resp.errorMessage));
                 return false;
             }
-            Bukkit.getScheduler().runTask(state.plugin, new BukkitRunnable() {
+            Bukkit.getScheduler().runTask(state.plugin, new Runnable() {
                 @Override
                 public void run() {
                     state.getPlayer().sendMessage(messageString);

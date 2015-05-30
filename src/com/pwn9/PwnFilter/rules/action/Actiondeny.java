@@ -15,7 +15,6 @@ import com.pwn9.PwnFilter.FilterState;
 /**
  * Deny this event by cancelling it.
  */
-@SuppressWarnings("UnusedDeclaration")
 public class Actiondeny implements Action {
 
     public void init(String s)

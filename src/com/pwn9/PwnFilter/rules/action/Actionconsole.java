@@ -13,12 +13,10 @@ package com.pwn9.PwnFilter.rules.action;
 import com.pwn9.PwnFilter.FilterState;
 import com.pwn9.PwnFilter.util.Patterns;
 import org.bukkit.Bukkit;
-import org.bukkit.scheduler.BukkitRunnable;
 
 /**
  * Execute a console command
  */
-@SuppressWarnings("UnusedDeclaration")
 public class Actionconsole implements Action {
     String command;
 
@@ -31,7 +29,7 @@ public class Actionconsole implements Action {
     public boolean execute(final FilterState state ) {
         final String cmd = Patterns.replaceVars(command, state);
         state.addLogMessage("Sending console command: " + cmd);
-        Bukkit.getScheduler().runTask(state.plugin, new BukkitRunnable() {
+        Bukkit.getScheduler().runTask(state.plugin, new Runnable() {
             @Override
             public void run() {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd);

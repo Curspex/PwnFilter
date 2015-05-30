@@ -28,7 +28,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * Time: 9:25 AM
  * To change this template use File | Settings | File Templates.
  */
-@SuppressWarnings("UnusedDeclaration")
 public class ClientManager {
 
     private static ClientManager _instance;

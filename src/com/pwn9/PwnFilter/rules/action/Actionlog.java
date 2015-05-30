@@ -15,7 +15,6 @@ import com.pwn9.PwnFilter.FilterState;
 /**
  * Log this event.
  */
-@SuppressWarnings("UnusedDeclaration")
 public class Actionlog implements Action {
 
     public void init(String s)

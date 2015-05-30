@@ -16,7 +16,6 @@ import com.pwn9.PwnFilter.util.ColoredString;
 /**
  * Convert the matched text to uppercase.
  */
-@SuppressWarnings("UnusedDeclaration")
 public class Actionupper implements Action {
 
     public void init(String s)

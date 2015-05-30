@@ -40,7 +40,6 @@ import java.util.regex.Pattern;
 
 //TODO: Make all this stuff private and create getters/setters
 
-@SuppressWarnings("UnusedDeclaration")
 public class FilterState {
     private final ColoredString originalMessage; // Original message
     private ColoredString modifiedMessage; // Modified message string

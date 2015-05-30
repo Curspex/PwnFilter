@@ -13,14 +13,11 @@ package com.pwn9.PwnFilter.rules.action;
 import com.pwn9.PwnFilter.FilterState;
 import com.pwn9.PwnFilter.util.DefaultMessages;
 import org.bukkit.Bukkit;
-import org.bukkit.scheduler.BukkitRunnable;
-
 import static com.pwn9.PwnFilter.util.Patterns.replaceVars;
 
 /**
  * Kick the user with a customized message.
  */
-@SuppressWarnings("UnusedDeclaration")
 public class Actionkick implements Action {
     // Message to apply to this kick action
     String messageString;
@@ -36,7 +33,7 @@ public class Actionkick implements Action {
         String outMessage = replaceVars(messageString,state);
 
         state.addLogMessage("Kicked " + state.playerName + ": " + messageString);
-        Bukkit.getScheduler().runTask(state.plugin, new BukkitRunnable() {
+        Bukkit.getScheduler().runTask(state.plugin, new Runnable() {
             @Override
             public void run() {
                 state.getPlayer().kickPlayer(messageString);

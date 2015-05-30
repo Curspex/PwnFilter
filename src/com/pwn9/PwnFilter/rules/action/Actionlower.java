@@ -16,7 +16,6 @@ import com.pwn9.PwnFilter.util.ColoredString;
 /**
  * Convert the matched text to lowercase.
  */
-@SuppressWarnings("UnusedDeclaration")
 public class Actionlower implements Action {
 
     public void init(String s)

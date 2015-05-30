@@ -17,7 +17,6 @@ import java.util.Random;
 /**
  * Replace the matched text with a random selection from a | seperated list of text.
  */
-@SuppressWarnings("UnusedDeclaration")
 public class Actionrandrep implements Action {
     private static Random random = new Random();
 

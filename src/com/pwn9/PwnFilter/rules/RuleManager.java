@@ -28,7 +28,6 @@ import java.util.Map;
  * Time: 2:18 PM
  */
 
-@SuppressWarnings("UnusedDeclaration")
 public class RuleManager {
     private static RuleManager _instance = null;
     private final Map<String, RuleChain> ruleChains = Collections.synchronizedMap(new HashMap<String, RuleChain>());

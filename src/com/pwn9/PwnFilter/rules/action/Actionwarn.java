@@ -14,12 +14,10 @@ import com.pwn9.PwnFilter.FilterState;
 import com.pwn9.PwnFilter.util.DefaultMessages;
 import com.pwn9.PwnFilter.util.Patterns;
 import org.bukkit.Bukkit;
-import org.bukkit.scheduler.BukkitRunnable;
 
 /**
  * Warn the user with the string provided.
  */
-@SuppressWarnings("UnusedDeclaration")
 public class Actionwarn implements Action {
     // Message to apply to this warn action
     String messageString;
@@ -33,7 +31,7 @@ public class Actionwarn implements Action {
         if ( state.getPlayer() == null ) return false;
         final String message = Patterns.replaceVars(messageString,state);
         state.addLogMessage("Warned " + state.playerName + ": " + message);
-        Bukkit.getScheduler().runTask(state.plugin, new BukkitRunnable() {
+        Bukkit.getScheduler().runTask(state.plugin, new Runnable() {
             @Override
             public void run() {
                 state.getPlayer().sendMessage(message);

@@ -20,7 +20,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
 import java.util.*;
@@ -32,7 +31,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * Date: 13-10-31
  * Time: 3:49 PM
  */
-@SuppressWarnings("UnusedDeclaration")
 public class PointManager implements FilterClient {
 
     private static PointManager _instance;
@@ -85,7 +83,7 @@ public class PointManager implements FilterClient {
         final PointManager pointManager = this;
 
         if (leakTask == null) {
-            leakTask = Bukkit.getScheduler().runTaskTimerAsynchronously(plugin, new BukkitRunnable() {
+            leakTask = Bukkit.getScheduler().runTaskTimerAsynchronously(plugin, new Runnable() {
                 @Override
                 public void run() {
                     //Every interval, check point balances, and if they are > 0, subtract leakPoints
@@ -190,7 +188,7 @@ public class PointManager implements FilterClient {
 
             // Check to see if we've crossed any thresholds on our way up/down, and if so
             // execute the actions for that crossing.
-            Bukkit.getScheduler().runTask(plugin, new BukkitRunnable() {
+            Bukkit.getScheduler().runTask(plugin, new Runnable() {
                 @Override
                 public void run() {
                     for (Map.Entry<Double, Threshold> entry : thresholds.subMap(oldKey, false, newKey, true).entrySet())
@@ -198,7 +196,7 @@ public class PointManager implements FilterClient {
                 }
             });
         } else {
-            Bukkit.getScheduler().runTask(plugin, new BukkitRunnable() {
+            Bukkit.getScheduler().runTask(plugin, new Runnable() {
                 @Override
                 public void run() {
                     for (Map.Entry<Double, Threshold> entry : thresholds.subMap(newKey, false, oldKey, true).descendingMap().entrySet())

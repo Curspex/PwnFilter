@@ -13,14 +13,11 @@ package com.pwn9.PwnFilter.rules.action;
 import com.pwn9.PwnFilter.FilterState;
 import com.pwn9.PwnFilter.util.Patterns;
 import org.bukkit.Bukkit;
-import org.bukkit.scheduler.BukkitRunnable;
-
 import java.util.ArrayList;
 
 /**
  * Execute a chain of console commands
  */
-@SuppressWarnings("UnusedDeclaration")
 public class Actionconchain implements Action {
     String[] commands;
 
@@ -39,7 +36,7 @@ public class Actionconchain implements Action {
         for (final String cmd : parsedCommands)
             state.addLogMessage("Sending console command: " + cmd);
 
-        Bukkit.getScheduler().runTask(state.plugin, new BukkitRunnable() {
+        Bukkit.getScheduler().runTask(state.plugin, new Runnable() {
             @Override
             public void run() {
             for (String cmd : parsedCommands ) {

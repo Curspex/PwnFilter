@@ -1,7 +1,8 @@
 main: com.pwn9.PwnFilter.PwnFilter
 name: PwnFilter
-version: 1.0
+version: 1.0.0
 author: tremor77
+authors: [tremor77, Omnivion]
 description: Complete chat control with the power of RegEx
 website: http://pwn9.com
 softdepend: [Vault]

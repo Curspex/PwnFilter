@@ -346,9 +346,13 @@ public class FileParser {
 
     /* Exceptions */
 
-    @SuppressWarnings("UnusedDeclaration")
     class ParserException extends Exception {
-        int lineNo;
+        /**
+		 *  DEFAULT SERIAL VERSION UID
+		 */
+		private static final long serialVersionUID = 1L;
+
+		int lineNo;
 
         public ParserException(String error) {
             super(error);
