@@ -117,8 +117,9 @@ public class ShortCutManager {
                     continue;
                 }
                 varset.put(parts[0].toLowerCase(),parts[1]);
-
             }
+            
+            reader.close();
 
         } catch (Exception e) {
             return false;

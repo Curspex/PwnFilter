@@ -41,6 +41,7 @@ public class Actionbroadcastfile implements Action {
             while ( (message = br.readLine()) != null ) {
                 messageStrings.add(ChatColor.translateAlternateColorCodes('&',message));
             }
+            br.close();
         } catch (FileNotFoundException ex) {
             LogManager.logger.warning("File not found while trying to add Action: " + ex.getMessage());
         } catch (IOException ex) {
