@@ -116,6 +116,8 @@ public class Condition {
                 return !matched;
             case require:
                 return matched;
+			default:
+				break;
         }
         // Well, we shouldn't be able to get here, but in case we did, return false
         return false;
